@@ -1,0 +1,8 @@
+{
+    "extends": "@tsconfig/node14/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "output/api/"
+    },
+    "include": ["src/API/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"] 
+}

@@ -1,0 +1,29 @@
+{
+  "name": "typescript_csharp_serverless",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "buildTs": "tsc",
+    "buildDotNet": "build.cmd",
+    "buildBoth": "npm run buildTs && npm run buildDotNet",
+    "serverlessPackage": "node_modules/.bin/serverless package",
+    "serverlessDeploy": "node_modules/.bin/serverless deploy",
+    "buildAndPackage": "npm run buildBoth && npm run serverlessPackage",
+    "deploy": "npm run buildAndPackage && npm run serverlessDeploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryancormack/typescript_csharp_serverless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryancormack/typescript_csharp_serverless/issues"
+  },
+  "homepage": "https://github.com/ryancormack/typescript_csharp_serverless#readme",
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/aws-lambda": "^8.10.82",
+    "serverless": "^2.53.1"
+  }
+}

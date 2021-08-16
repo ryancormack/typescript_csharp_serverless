@@ -1,0 +1,35 @@
+service: csharpandtypescript
+frameworkVersion: '2'
+provider:
+  name: aws  
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-1
+
+package:
+  individually: true
+
+functions:  
+  worker:
+    runtime: dotnetcore3.1
+    handler: Worker::Worker.Handler::Handle
+    memorySize: 512
+    timeout: 10
+    events:
+      - sns: dowork
+    package:
+      artifact: output/worker/Release/netcoreapp3.1/worker.zip
+  
+  api:
+    runtime: nodejs14.x
+    handler: output/api/index.apiHandle
+    memorySize: 128
+    timeout: 1
+    events:
+      - httpApi:
+          method: GET
+          path: /api
+    package:
+      patterns:
+        - '!**/**'
+        - output/api/index.js
